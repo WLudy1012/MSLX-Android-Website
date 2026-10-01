@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#151c17">
+    <meta name="description" content="MSLX Android 是面向 MSLX Daemon 的第三方 Android 控制台，支持远程管理与手机本机开服。">
+    <meta property="og:title" content="MSLX Android · 移动端服务器控制台">
+    <meta property="og:description" content="连接 Daemon，管理实例，也可以直接在手机上开服。">
+    <meta property="og:image" content="assets/mslx-logo.png">
+    <title>MSLX Android · 移动端服务器控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="site-booting">
+    <div class="boot-screen" data-loader aria-label="正在加载 MSLX Android 网站" aria-live="polite">
+      <div class="boot-shell">
+        <div class="boot-topline"><span class="boot-brand"><img src="assets/mslx-logo.png" alt="MSLX"><b>MSLX / ANDROID CONSOLE</b></span><span data-boot-percent>000</span></div>
+        <div class="boot-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="boot-bottomline"><span data-boot-status>mounting interface</span><span>TOUCH / CONNECT / RUN</span></div>
+      </div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="MSLX Android 首页"><img src="assets/mslx-logo.png" alt="MSLX"><span><b>MSLX</b><small>ANDROID CONSOLE</small></span></a>
+      <nav class="desktop-nav" aria-label="主导航"><a href="#system">系统</a><a href="#operations">现场</a><a href="#modes">双模式</a><a href="#console">控制台</a><a href="download.html">下载</a></nav>
+      <div class="header-right"><span class="header-status"><i></i> OPEN SOURCE</span><a class="header-link" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="打开导航"><span></span><span></span></button></div>
+      <nav class="mobile-nav" id="mobile-nav" aria-label="移动端主导航"><a href="#system">系统</a><a href="#operations">现场</a><a href="#modes">双模式</a><a href="#console">控制台</a><a href="download.html">下载 APK</a><a href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">打开 GitHub</a></nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="hero-rule"><span></span><span>THIRD-PARTY ANDROID CONSOLE</span><span>01 / 04</span></div>
+          <h1 id="hero-title">让服务器<br><em>跟着你走。</em></h1>
+          <p class="hero-lede">MSLX Android 把 Daemon 管理、实时控制台和手机本机开服放进一条触屏友好的工作流。</p>
+          <div class="hero-actions"><a class="action action-dark" href="download.html">查看最新版本 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="action action-line" href="#system">了解工作方式 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></div>
+          <div class="hero-foot"><span>触屏优先的运维路径</span><span>KOTLIN / COMPOSE</span><span>AGPL-3.0</span></div>
+        </div>
+        <div class="hero-visual">
+          <figure class="hero-image" data-scroll-parallax="hero"><img src="assets/daemon-night.jpg" alt="MSLX WebPanel 深色背景"><div class="image-overlay"></div><div class="image-label image-label-top"><span>DAEMON / NIGHT VIEW</span><span>CONNECTED</span></div><div class="image-label image-label-bottom"><span>survival-01</span><b>RUNNING</b></div><figcaption>把正在发生的事，带到手边。</figcaption></figure>
+          <div class="hero-signal" data-scroll-parallax="signal"><span class="signal-caption">LOCAL ENGINE</span><strong>READY</strong><i></i><span class="signal-code">JVM / SHIZUKU / RUNTIME</span></div>
+        </div>
+      </section>
+
+      <section class="manifesto section-shell" aria-labelledby="manifesto-title">
+        <div class="section-mark"><span>MSLX</span><b>02</b></div>
+        <div class="manifesto-copy"><h2 id="manifesto-title">不是把桌面端<br>缩小，而是把现场<br><em>重新整理。</em></h2><p>实例、日志、文件、权限和运行时，都沿着同一条路径出现。你可以在局域网里连接电脑上的 Daemon，也可以把服务端直接放进手机。</p></div>
+        <div class="manifesto-note"><span>FIELD NOTE</span><p>每一个入口都回答一个实际问题：现在跑着什么，下一步要做什么，出了问题从哪里恢复。</p></div>
+      </section>
+
+      <section class="system dark-band" id="system" aria-labelledby="system-title">
+        <div class="section-shell system-inner">
+          <div class="system-head"><div class="section-mark section-mark-light"><span>THE SYSTEM</span><b>03</b></div><div><h2 id="system-title">一台手机，<br><em>两个现场。</em></h2><p>远程管理与本机开服共用一套清楚的实例模型，复杂能力被放在用户真正需要它们的地方。</p></div></div>
+          <div class="system-grid">
+            <article class="system-panel system-panel-large"><div class="panel-top"><span>REMOTE DAEMON</span><b>01</b></div><h3>连接你已经拥有的基础设施。</h3><p>保存多个 Daemon 地址与 API Key，按实例进入。主页实时汇总 CPU、内存、系统信息和在线状态。</p><div class="panel-graphic remote-graphic"><span class="node node-phone">PHONE</span><span class="node node-daemon">DAEMON</span><i class="link-line link-one"></i><i class="link-line link-two"></i><i class="link-line link-three"></i><span class="graphic-readout">SIGNALR / LIVE</span></div></article>
+            <article class="system-panel"><div class="panel-top"><span>INSTANCE FLOW</span><b>02</b></div><h3>沿着实例完成维护。</h3><p>启停、重启、备份、控制台、文件、插件与 server.properties 都围绕当前实例展开。</p><div class="panel-list"><span><i></i>CONTROL</span><span><i></i>FILES</span><span><i></i>MODS</span></div></article>
+            <article class="system-panel"><div class="panel-top"><span>LOCAL HOST</span><b>03</b></div><h3>没有电脑，也能开服。</h3><p>进程内 JVM 作为基础，Shizuku 可以增强为独立 Java 子进程，公共或私有目录都能选择。</p><div class="panel-readout"><span>JAVA RUNTIME</span><b>08&nbsp;&nbsp;17&nbsp;&nbsp;21&nbsp;&nbsp;25</b></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="operations section-shell" id="operations" aria-labelledby="operations-title">
+        <div class="operations-intro"><div class="section-mark"><span>IN THE FIELD</span><b>04</b></div><h2 id="operations-title">从配对到<br><em>运行。</em></h2><p>一条面向手指的路径，覆盖每天都会发生的动作。</p><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android#使用" target="_blank" rel="noreferrer">阅读使用说明 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
+        <div class="operation-list">
+            <article class="operation-row"><span class="operation-number">01</span><div class="operation-copy" data-scroll-speed=".8"><span>PAIR</span><h3>先把关系说清楚。</h3><p>填写 Daemon 地址与 API Key，完成配对。之后每个入口都指向一个明确的实例。</p></div><div class="operation-meter" data-scroll-speed="-1"><i></i><i></i><i></i><b>CONNECTED</b></div></article>
+            <article class="operation-row"><span class="operation-number">02</span><div class="operation-copy" data-scroll-speed=".65"><span>OPERATE</span><h3>再把动作放在一起。</h3><p>实时日志、命令发送、自动滚动和实例控制共享同一个现场，不让你在页面之间丢失上下文。</p></div><div class="operation-terminal" data-scroll-speed="-.8"><span>&gt; server status</span><b>running</b><span>&gt; players --online</span><b>04 connected</b></div></article>
+            <article class="operation-row"><span class="operation-number">03</span><div class="operation-copy" data-scroll-speed=".8"><span>HOST LOCAL</span><h3>最后，把现场留在身边。</h3><p>选择 Java 运行时与实例目录，前台服务和常驻通知让进程在离开 App 后继续工作。</p></div><div class="operation-local" data-scroll-speed="-1"><span>LOCAL</span><i></i><b>READY</b></div></article>
+        </div>
+      </section>
+
+      <section class="modes dark-band" id="modes" aria-labelledby="modes-title">
+        <div class="section-shell modes-inner">
+          <div class="modes-head"><div class="section-mark section-mark-light"><span>CHOOSE YOUR FIELD</span><b>05</b></div><div><h2 id="modes-title">同一套控制台，<br><em>两种运行方式。</em></h2><p>切换不是另一个产品，而是选择服务器此刻所在的位置。</p></div></div>
+          <div class="mode-switcher" role="tablist" aria-label="运行模式"><button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="mode-remote" data-mode="remote">REMOTE DAEMON</button><button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="mode-local" data-mode="local">LOCAL ENGINE</button></div>
+          <div class="mode-panels"><article class="mode-panel is-active" id="mode-remote" role="tabpanel" data-mode-panel="remote"><div class="mode-panel-art remote-art"><span>API KEY</span><b>HTTPS</b><i></i><strong>DAEMON</strong></div><div><span class="mode-label">REMOTE / LAN</span><h3>电脑在跑，你在移动。</h3><p>同一局域网内连接 MSLX Daemon，管理多个实例，查看系统负载与在线人数，随时发送命令或执行备份。</p><ul><li>多 Daemon 平级共存</li><li>SignalR 实时状态</li><li>实例级控制与文件管理</li></ul></div></article><article class="mode-panel" id="mode-local" role="tabpanel" data-mode-panel="local" hidden><div class="mode-panel-art local-art"><span>JVM</span><b>SHIZUKU</b><i></i><strong>PHONE</strong></div><div><span class="mode-label">LOCAL / DEVICE</span><h3>电脑不在，服务器还在。</h3><p>直接在手机上运行 Minecraft Java 服务端，选择公共目录或私有目录，用 Java 运行时和保活通知守住进程。</p><ul><li>Java 8 / 17 / 21 / 25</li><li>进程内 JVM 基线引擎</li><li>Shizuku 增强模式</li></ul></div></article></div>
+        </div>
+      </section>
+
+      <section class="console-section section-shell" id="console" aria-labelledby="console-title">
+        <div class="console-heading"><div class="section-mark"><span>LIVE CONSOLE</span><b>06</b></div><div><h2 id="console-title">日志不该<br><em>像黑箱。</em></h2><p>ANSI 原彩、命令输入、自动滚动和回到最新，都在一个持续更新的视野里。</p></div></div>
+        <div class="console-layout"><div class="console-window" aria-label="控制台示例"><div class="console-window-top"><span><i></i><i></i><i></i></span><b>survival-01 / console</b><span>LIVE</span></div><div class="console-lines"><p><span>12:08:41</span> [Server thread/INFO]: Done (4.921s)! For help, type "help"</p><p><span>12:08:47</span> [Server thread/INFO]: <b>There are 4 of a max of 20 players online</b></p><p><span>12:09:02</span> [User Authenticator #2/INFO]: UUID of player operator is ready</p><p><span>12:09:13</span> [Server thread/INFO]: Saving the game (this may take a moment!)</p><p class="console-cursor"><span>12:09:14</span> &gt; <i></i></p></div><div class="console-input"><span>&gt;</span><span>send a command</span><b>ENTER</b></div></div><aside class="console-aside"><span class="aside-label">WHY IT MATTERS</span><h3>把状态变成下一步动作。</h3><p>当日志、命令和实例控制处在一起，你不需要猜测服务器发生了什么，也不需要在不同工具之间来回翻找。</p><div class="aside-facts"><span><b>ANSI</b><small>原彩显示</small></span><span><b>LIVE</b><small>实时推送</small></span><span><b>LOCAL</b><small>同样的控制台</small></span></div></aside></div>
+      </section>
+
+      <section class="cta section-shell" aria-labelledby="cta-title"><div class="cta-rule"></div><div class="cta-copy"><span class="section-mark"><span>TAKE THE CONSOLE</span><b>07</b></span><h2 id="cta-title">把它装进<br><em>你的工作流。</em></h2><p>源代码、构建方式、使用说明和免责声明都在仓库里公开。先阅读，再把移动入口交给你的服务器。</p></div><div class="cta-actions"><a class="action action-dark" href="download.html">下载 APK <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="action action-line" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">浏览源代码</a></div></section>
+    </main>
+
+    <footer class="site-footer section-shell"><a class="brand" href="#top" aria-label="回到顶部"><img src="assets/mslx-logo.png" alt="MSLX"><span><b>MSLX</b><small>ANDROID CONSOLE</small></span></a><p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p><div class="footer-links"><a href="download.html">下载</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/LICENSE" target="_blank" rel="noreferrer">AGPL-3.0</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/DISCLAIMER.txt" target="_blank" rel="noreferrer">免责声明</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">反馈问题</a></div><span class="footer-note">MSLX / 2026 / WLudy1012</span></footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
