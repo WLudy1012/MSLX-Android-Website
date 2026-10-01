@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#151c17">
-    <meta name="description" content="从 CNB Release 获取 MSLX Android 最新完整版与精简版 APK。">
-    <title>下载 MSLX Android · CNB Release</title>
+    <meta name="description" content="下载 Rolithax Launcher Android 客户端。页面读取最新公开 Release，并提供完整版与精简版 APK。">
+    <title>下载 Rolithax Launcher · Android APK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="download.css">
   </head>
   <body class="site-booting download-page">
-    <div class="boot-screen" data-loader aria-label="正在加载 MSLX Android 下载页" aria-live="polite">
+    <div class="boot-screen" data-loader aria-label="正在加载 Rolithax Launcher 下载页" aria-live="polite">
       <div class="boot-shell">
-        <div class="boot-topline"><span class="boot-brand"><img src="assets/mslx-logo.png" alt="MSLX"><b>MSLX / RELEASE CHANNEL</b></span><span data-boot-percent>000</span></div>
+        <div class="boot-topline"><span class="boot-brand"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><b>ROLITHAX / RELEASE CHANNEL</b></span><span data-boot-percent>000</span></div>
         <div class="boot-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="boot-bottomline"><span data-boot-status>mounting release channel</span><span>FETCH / VERIFY / INSTALL</span></div>
       </div>
@@ -23,20 +23,20 @@
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header download-header">
-      <a class="brand" href="index.html" aria-label="返回 MSLX Android 首页"><img src="assets/mslx-logo.png" alt="MSLX"><span><b>MSLX</b><small>ANDROID CONSOLE</small></span></a>
+      <a class="brand" href="index.html" aria-label="返回 Rolithax Launcher 首页"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><span><b>ROLITHAX</b><small>MSLX SERVER CONTROL</small></span></a>
       <div class="header-right"><span class="header-status"><i></i> CNB RELEASE</span><a class="header-link" href="index.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>返回主页</a></div>
     </header>
 
     <main>
       <section class="download-hero section-shell" aria-labelledby="download-title">
         <div class="download-hero-copy">
-          <p class="download-overline">MSLX / ANDROID RELEASE CHANNEL</p>
-          <h1 id="download-title">把控制台装进<br><em>手机。</em></h1>
-          <p class="download-lede">从 CNB 的最新 Release 读取附件，直接获取与当前版本匹配的完整版或精简版 APK。</p>
+          <p class="download-overline">ROLITHAX LAUNCHER / ANDROID</p>
+          <h1 id="download-title">先选安装包，<br><em>再开始开服。</em></h1>
+          <p class="download-lede">页面读取仓库最新公开 Release，提供 Rolithax Launcher 完整版与精简版 APK。版本号以 Release 信息为准。</p>
           <div class="download-hero-actions"><a class="action action-dark" href="#packages">选择安装包 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a><a class="action action-line" href="https://cnb.cool/WLudy/MSLX_APP-Android/-/releases" target="_blank" rel="noreferrer">查看 CNB Release <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
         </div>
         <aside class="release-scan" aria-live="polite">
-          <div class="release-scan-top"><span>CNB RELEASE API</span><b data-api-state>CONNECTING</b></div>
+          <div class="release-scan-top"><span>LATEST PUBLIC RELEASE</span><b data-api-state>CONNECTING</b></div>
           <strong data-release-version>SYNCING</strong>
           <div class="release-scan-line"><i></i></div>
           <div class="release-scan-bottom"><span data-release-date>正在请求最新版本</span><span data-release-source>cnb.cool</span></div>
@@ -49,7 +49,7 @@
           <article class="download-card" data-artifact-card="full">
             <div class="download-card-top"><span>FULL BUILD</span><b>APK / 01</b></div>
             <h3>完整版</h3>
-            <p>内嵌 Android JRE 运行时，本机开服可以离线使用，适合希望一次安装完成的设备。</p>
+            <p>内含 Java 17 Android 运行时。Java 8、21 和 25 可按服务端需要在应用内获取。</p>
             <div class="asset-meta"><span data-asset-size>等待附件大小</span><span data-asset-hash>SHA-256 等待解析</span></div>
             <a class="action action-dark download-action" data-download-link="full" href="https://cnb.cool/WLudy/MSLX_APP-Android/-/releases" target="_blank" rel="noreferrer" aria-label="打开 CNB Release 下载完整版 APK"><span>获取完整版 APK</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
             <span class="download-status" data-asset-status>等待 CNB Release 数据</span>
@@ -57,7 +57,7 @@
           <article class="download-card download-card-lite" data-artifact-card="lite">
             <div class="download-card-top"><span>LITE BUILD</span><b>APK / 02</b></div>
             <h3>精简版</h3>
-            <p>不含内嵌运行时，安装包更小；第一次在手机上开服时会按需联网下载运行时。</p>
+            <p>不含内嵌 Java 运行时，安装包更小；本机开服时按服务端版本联网获取所需运行时。</p>
             <div class="asset-meta"><span data-asset-size>等待附件大小</span><span data-asset-hash>SHA-256 等待解析</span></div>
             <a class="action action-line download-action" data-download-link="lite" href="https://cnb.cool/WLudy/MSLX_APP-Android/-/releases" target="_blank" rel="noreferrer" aria-label="打开 CNB Release 下载精简版 APK"><span>获取精简版 APK</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
             <span class="download-status" data-asset-status>等待 CNB Release 数据</span>
@@ -67,11 +67,11 @@
 
       <section class="download-notes section-shell" aria-labelledby="notes-title">
         <div><p class="download-overline">INSTALL NOTES</p><h2 id="notes-title">先确认，再<br><em>开始下载。</em></h2></div>
-        <div class="download-note-copy"><p>两个 APK 来自同一个 CNB Release，版本号与签名一致，可以互相覆盖安装。完整版适合本机开服与离线场景；精简版适合更在意安装体积的设备。</p><div class="download-link-row"><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android/releases" target="_blank" rel="noreferrer">GitHub Releases 备用入口 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/README.md" target="_blank" rel="noreferrer">阅读安装说明 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div><p class="download-api-note" data-api-note>页面会从 CNB Release API 读取最新附件信息。</p></div>
+        <div class="download-note-copy"><p>两个 APK 来自同一个 Release，版本号与签名一致，可以互相覆盖安装。完整版适合已安装所需运行时的设备；精简版适合希望缩小安装包的设备。</p><aside class="release-note" aria-label="公开版本说明"><span>公开版本</span><p>未发布的源码改动不会自动进入 APK；安装包名称、应用身份和功能以当前公开 Release 的实际产物为准。</p></aside><aside class="migration-note" aria-labelledby="migration-title"><span>从旧版迁移</span><h3 id="migration-title">Rolithax Launcher 使用了新的应用身份。</h3><p>旧版 MSLX Android 与 Rolithax Launcher 的包名和签名不同，不能直接覆盖安装。请先在旧版「设置 → 导出应用数据」创建加密备份（密码至少 8 位），再安装新版并通过「设置 → 导入应用数据」恢复。备份包含 Daemon 配置和 API Key；导入后，新安装会用自己的 Android Keystore 加密保存密钥。</p></aside><div class="download-link-row"><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android/releases" target="_blank" rel="noreferrer">GitHub Releases 备用入口 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/README.md" target="_blank" rel="noreferrer">阅读安装说明 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div><p class="download-api-note" data-api-note>页面会从最新公开 Release 读取附件信息。</p></div>
       </section>
     </main>
 
-    <footer class="site-footer section-shell"><a class="brand" href="index.html" aria-label="回到 MSLX Android 首页"><img src="assets/mslx-logo.png" alt="MSLX"><span><b>MSLX</b><small>ANDROID CONSOLE</small></span></a><p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p><div class="footer-links"><a href="index.html">首页</a><a href="https://cnb.cool/WLudy/MSLX_APP-Android/-/releases" target="_blank" rel="noreferrer">CNB Releases</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">反馈问题</a></div><span class="footer-note">MSLX / RELEASE CHANNEL / WLudy1012</span></footer>
+    <footer class="site-footer section-shell"><a class="brand" href="index.html" aria-label="回到 Rolithax Launcher 首页"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><span><b>ROLITHAX</b><small>MSLX SERVER CONTROL</small></span></a><p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p><div class="footer-links"><a href="index.html">首页</a><a href="https://cnb.cool/WLudy/MSLX_APP-Android/-/releases" target="_blank" rel="noreferrer">CNB Releases</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">反馈问题</a></div><span class="footer-note">ROLITHAX / RELEASE CHANNEL / WLudy1012</span></footer>
 
     <script src="download.js"></script>
   </body>
