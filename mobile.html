@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#171d18">
+    <meta name="description" content="在 Android 上管理 MSLX Daemon，或直接运行 Minecraft Java 服务端。">
+    <meta property="og:title" content="Rolithax Launcher · 移动版">
+    <meta property="og:description" content="远程管理与手机开服，收在一条轻巧的操作路径里。">
+    <meta property="og:image" content="assets/rolithax-logo.png">
+    <title>Rolithax Launcher · 移动端服务器控制</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/rolithax-logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/rolithax-logo.png">
+    <script>
+      if (new URLSearchParams(location.search).has("desktop")) {
+        location.replace(new URL("index.html?desktop=1", location.href).href);
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        window.setTimeout(() => document.body.classList.add("is-ready"), 470);
+      }, { once: true });
+      window.setTimeout(() => document.body.classList.add("is-ready"), 1400);
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mobile.css">
+  </head>
+  <body class="mobile-site site-booting">
+    <div class="boot-screen" data-loader aria-label="正在载入网站" aria-live="polite">
+      <div class="boot-shell">
+        <div class="boot-topline"><span class="boot-brand"><img src="assets/rolithax-logo.png" alt=""><b>ROLITHAX / MOBILE</b></span><span>01 / 02</span></div>
+        <div class="boot-track"><i></i></div>
+        <div class="boot-bottomline"><span>整理服务器现场</span><span>REMOTE / LOCAL / READY</span></div>
+      </div>
+    </div>
+    <div class="mobile-progress" aria-hidden="true"><span></span></div>
+
+    <header class="mobile-header">
+      <a class="mobile-brand" href="#top" aria-label="Rolithax Launcher 首页">
+        <img src="assets/rolithax-logo.png" alt="">
+        <span><b>ROLITHAX</b><small>SERVER CONTROL</small></span>
+      </a>
+      <a class="mobile-header-link" href="download.html">下载 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+    </header>
+
+    <main id="top">
+      <section class="mobile-hero" aria-labelledby="mobile-title">
+        <div class="mobile-hero-copy">
+          <h1 id="mobile-title">远程能管理，<br>手机能开服。</h1>
+          <p class="mobile-intro">把 MSLX Daemon 和手机本机服务端放进同一个总览。出门在外能看远程状态，没有电脑也能直接开服。</p>
+          <a class="mobile-primary-action" href="download.html"><span>选择 APK 安装包</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+          <p class="release-caveat">安装包以当前公开 Release 为准</p>
+        </div>
+        <figure class="mobile-landscape">
+          <img src="assets/daemon-night.jpg" alt="夜色中的 Minecraft 世界，代表远程与本机服务器的运行场景">
+          <div class="landscape-fade"></div>
+          <div class="landscape-caption"><span>SERVER SCENE / 01</span><b>REMOTE + ON DEVICE</b></div>
+          <div class="landscape-chip"><i></i><span data-mobile-image-label>从一台 Daemon 开始</span></div>
+          <figcaption>一个控制入口，两种运行位置。</figcaption>
+        </figure>
+        <div class="hero-proof-mobile"><span>多台 Daemon</span><i></i><span>本机 Java 8–25</span><i></i><span>AGPL-3.0</span></div>
+      </section>
+
+      <section class="mobile-modes" id="modes" aria-labelledby="modes-title">
+        <div class="mobile-section-heading">
+          <h2 id="modes-title">远程与本机，<br><em>都能接着管。</em></h2>
+          <p>切换运行方式，看看 Rolithax Launcher 怎样把连接和维护收在一起。</p>
+        </div>
+        <div class="mobile-mode-control" role="tablist" aria-label="运行位置">
+          <button class="mobile-mode-tab is-active" type="button" role="tab" id="remote-tab" aria-controls="mode-panel" aria-selected="true" data-mobile-mode="remote">远程 Daemon</button>
+          <button class="mobile-mode-tab" type="button" role="tab" id="local-tab" aria-controls="mode-panel" aria-selected="false" data-mobile-mode="local">手机本机</button>
+          <span class="mobile-mode-indicator" aria-hidden="true"></span>
+        </div>
+        <article class="mobile-mode-panel" id="mode-panel" role="tabpanel" aria-labelledby="remote-tab" data-mobile-panel>
+          <div class="mode-panel-title"><h3 data-mobile-mode-title>已有主机，也能随身管。</h3><span data-mobile-kicker>REMOTE / DAEMON</span><p data-mobile-mode-description>并行查看多个 Daemon 的连接状态与响应时间。进入实例即可控制进程、看日志、管理文件。</p></div>
+          <div class="instance-illustration" data-instance-illustration aria-label="服务端总览界面示意，非实时数据">
+            <div class="illustration-top"><span>SERVER OVERVIEW</span><b>示意界面</b></div>
+            <div class="instance-row" data-instance-row="remote"><span class="instance-signal"></span><span class="instance-name"><b data-instance-name>remote-01</b><small data-instance-location>DAEMON / HTTPS</small></span><span class="instance-state">ONLINE</span></div>
+            <div class="instance-row" data-instance-row="local"><span class="instance-signal"></span><span class="instance-name"><b data-instance-name>local-world</b><small data-instance-location>ANDROID / JVM</small></span><span class="instance-state">RUNNING</span></div>
+            <div class="illustration-foot"><span data-illustration-foot>多个连接分别显示状态</span><span>INSTANCE <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span></div>
+          </div>
+          <ul class="mode-benefits" data-mobile-benefits>
+            <li>多台连接保持独立</li>
+            <li>HTTPS 优先与二维码配对</li>
+            <li>SignalR 实时状态</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="mobile-local-band" aria-labelledby="local-title">
+        <div class="mobile-section-heading">
+          <h2 id="local-title">让手机自己<br><em>跑起 Java 服务端。</em></h2>
+          <p>按 Minecraft 版本选择 Java 环境，放进应用私有目录或授权的公共目录，然后从应用内控制台操作。</p>
+        </div>
+        <div class="runtime-strip" aria-label="可用的 Java 运行时版本"><span>JAVA RUNTIME</span><b>08</b><b>17</b><b>21</b><b>25</b></div>
+        <div class="local-note"><span>运行方式</span><p>基础引擎运行在应用进程内；Shizuku 可启用隔离的 Java 子进程。保持运行时通过 Android 前台服务与常驻通知完成。</p></div>
+      </section>
+
+      <section class="mobile-path" id="workflow" aria-labelledby="path-title">
+        <div class="mobile-section-heading">
+          <h2 id="path-title">开服之后，<br><em>每一步都有入口。</em></h2>
+        </div>
+        <ol class="path-list">
+          <li class="path-item">
+            <span class="path-mark">01</span>
+            <div><h3>连接或配对</h3><p>扫描 MSLX 配对二维码，或手动填写 Daemon 地址与 API Key。</p><span class="path-tag">HTTPS FIRST / ANDROID KEYSTORE</span></div>
+          </li>
+          <li class="path-item">
+            <span class="path-mark">02</span>
+            <div><h3>选择目标并创建</h3><p>通过分步向导选择远程或本机、服务端核心、Java 运行时与资源。</p><span class="path-tag">REMOTE OR LOCAL</span></div>
+          </li>
+          <li class="path-item">
+            <span class="path-mark">03</span>
+            <div><h3>部署模组与插件</h3><p>在 Modrinth 资源中心查找模组、插件、整合包和数据包，并检查依赖关系。</p><span class="path-tag">MODRINTH / DEPENDENCIES</span></div>
+          </li>
+          <li class="path-item">
+            <span class="path-mark">04</span>
+            <div><h3>在控制台处理变化</h3><p>接收 ANSI 彩色实时日志、发送命令，再维护文件与服务端配置。</p><span class="path-tag">LIVE LOGS / SERVER FILES</span></div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="mobile-console">
+        <div class="mobile-section-heading">
+          <h2>日志、命令、<br><em>不必来回找。</em></h2>
+        </div>
+        <div class="mobile-console-view" aria-label="控制台界面示意">
+          <div class="mobile-console-top"><span>INSTANCE / CONSOLE</span><b>示意界面</b></div>
+          <p><span>[server]</span> Starting Minecraft server</p>
+          <p><span>[loader]</span> Checking Java runtime</p>
+          <p><span>[resource]</span> Dependency scan complete</p>
+          <div class="mobile-console-input"><b>&gt;</b><i></i><small>输入命令</small></div>
+        </div>
+        <p class="console-caption">同一实例还可维护文件、模组、插件和 server.properties。</p>
+      </section>
+
+      <section class="mobile-download-callout" aria-labelledby="mobile-cta-title">
+        <div class="cta-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h2 id="mobile-cta-title">准备好把现场<br>装进口袋了吗？</h2>
+        <p>公开版本页面提供当前 Release 的 APK 与附件校验信息。未发布的源码改动不会自动进入安装包。</p>
+        <a class="mobile-primary-action" href="download.html"><span>查看版本并下载</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+        <a class="source-link" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">浏览 Android 源码 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      </section>
+    </main>
+
+    <footer class="mobile-footer">
+      <a class="mobile-brand" href="#top"><img src="assets/rolithax-logo.png" alt=""><span><b>ROLITHAX</b><small>SERVER CONTROL</small></span></a>
+      <p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p>
+      <nav aria-label="法律与支持">
+        <a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/LICENSE" target="_blank" rel="noreferrer">AGPL-3.0</a>
+        <a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/DISCLAIMER.txt" target="_blank" rel="noreferrer">免责声明</a>
+        <a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">问题反馈</a>
+        <a href="index.html?desktop=1">桌面版</a>
+      </nav>
+      <span class="mobile-footer-note">ROLITHAX / WLudy1012 / 2026</span>
+    </footer>
+
+    <div class="mobile-dock"><a href="download.html">下载最新公开版本 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a></div>
+    <script src="mobile.js" type="module"></script>
+  </body>
+</html>

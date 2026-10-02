@@ -3,93 +3,198 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#151c17">
-    <meta name="description" content="Rolithax Launcher 是面向 MSLX Daemon 的第三方 Android 控制台，也支持在手机本机创建、运行和管理 Minecraft 服务端。">
-    <meta property="og:title" content="Rolithax Launcher · MSLX 移动控制台与本机开服">
-    <meta property="og:description" content="统一管理多个 MSLX Daemon 与手机本机服务端，在 Android 上创建、运行和维护 Minecraft Java 服务端。">
+    <meta name="theme-color" content="#171d18">
+    <meta name="description" content="Rolithax Launcher 将多个 MSLX Daemon 与 Android 本机 Minecraft Java 服务端统一到一套管理流程。">
+    <meta property="og:title" content="Rolithax Launcher · 服务器控制随手而行">
+    <meta property="og:description" content="管理远程 Daemon，也能直接从 Android 手机创建、运行和维护 Minecraft Java 服务端。">
     <meta property="og:image" content="assets/rolithax-logo.png">
-    <title>Rolithax Launcher · 手机端服务端管理与开服</title>
+    <title>Rolithax Launcher · 管理远程服务器，也能手机开服</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/rolithax-logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/rolithax-logo.png">
+    <script>
+      const narrowScreen = matchMedia("(max-width: 820px)");
+      const desktopOverride = new URLSearchParams(location.search).has("desktop");
+      if (desktopOverride) document.documentElement.classList.add("desktop-forced");
+      const routeToMobile = () => {
+        if (!desktopOverride && narrowScreen.matches) {
+          location.replace(new URL("mobile.html", location.href).href);
+        }
+      };
+      routeToMobile();
+      narrowScreen.addEventListener("change", routeToMobile);
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => window.setTimeout(() => document.body.classList.add("is-ready"), 420), { once: true });
+      window.setTimeout(() => document.body.classList.add("is-ready"), 1400);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body class="site-booting">
-    <div class="boot-screen" data-loader aria-label="正在加载 Rolithax Launcher 网站" aria-live="polite">
+  <body class="desktop-site site-booting">
+    <div class="boot-screen" data-loader aria-label="正在载入网站" aria-live="polite">
       <div class="boot-shell">
-        <div class="boot-topline"><span class="boot-brand"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><b>ROLITHAX / ANDROID LAUNCHER</b></span><span data-boot-percent>000</span></div>
-        <div class="boot-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="boot-bottomline"><span data-boot-status>mounting interface</span><span>TOUCH / CONNECT / RUN</span></div>
+        <div class="boot-topline"><span class="boot-brand"><img src="assets/rolithax-logo.png" alt=""><b>ROLITHAX / SERVER CONTROL</b></span><span data-boot-percent>000</span></div>
+        <div class="boot-track"><i></i></div>
+        <div class="boot-bottomline"><span>加载交互场景</span><span>REMOTE / LOCAL / READY</span></div>
       </div>
     </div>
-    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="page-meter" aria-hidden="true"><span></span></div>
 
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Rolithax Launcher 首页"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><span><b>ROLITHAX</b><small>MSLX SERVER CONTROL</small></span></a>
-      <nav class="desktop-nav" aria-label="主导航"><a href="#system">系统</a><a href="#operations">现场</a><a href="#modes">双模式</a><a href="#console">控制台</a><a href="download.html">下载</a></nav>
-      <div class="header-right"><span class="header-status"><i></i> OPEN SOURCE</span><a class="header-link" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a><button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="打开导航"><span></span><span></span></button></div>
-      <nav class="mobile-nav" id="mobile-nav" aria-label="移动端主导航"><a href="#system">系统</a><a href="#operations">现场</a><a href="#modes">双模式</a><a href="#console">控制台</a><a href="download.html">下载 APK</a><a href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">打开 GitHub</a></nav>
+      <a class="brand" href="#top" aria-label="Rolithax Launcher 首页">
+        <img src="assets/rolithax-logo.png" alt="">
+        <span><b>ROLITHAX</b><small>SERVER CONTROL / ANDROID</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#world">两种现场</a>
+        <a href="#workflow">运行路径</a>
+        <a href="#console">日常维护</a>
+        <a href="download.html">下载</a>
+      </nav>
+      <div class="header-actions">
+        <a class="mobile-route" href="mobile.html">移动版 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+        <a class="header-cta" href="download.html">获取 APK <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+      </div>
     </header>
 
     <main id="top">
       <section class="hero section-shell" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <div class="hero-rule"><span></span><span>MSLX CONTROL / ANDROID SERVER</span><span>ROLITHAX LAUNCHER</span></div>
-          <h1 id="hero-title">远程能管理，<br><em>手机能开服。</em></h1>
-          <p class="hero-lede">Rolithax Launcher 将多台 MSLX Daemon 与手机本机服务端放进同一套管理流程：查看运行状态、打开控制台、创建实例，也能部署模组与插件。</p>
-          <div class="hero-actions"><a class="action action-dark" href="download.html">查看最新版本 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="action action-line" href="#system">了解工作方式 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></div>
-          <div class="hero-foot"><span>多 Daemon 并行状态</span><span>本机与云端实例统一管理</span><span>AGPL-3.0</span></div>
+          <h1 id="hero-title">服务器在哪，<br><em>控制就到哪。</em></h1>
+          <p class="hero-lede">连接已有的 MSLX Daemon，或让 Android 手机直接运行 Minecraft Java 服务端。实例、控制台和维护工具回到同一条操作路径。</p>
+          <div class="hero-actions">
+            <a class="action action-primary magnetic" href="download.html"><span>选择安装包</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+            <a class="action action-quiet" href="#world"><span>看看如何工作</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-7-7 7 7 7-7"/></svg></a>
+          </div>
+          <div class="hero-proof"><span>多 Daemon 并行连接</span><i></i><span>本机 Java 8–25</span><i></i><span>AGPL-3.0</span></div>
         </div>
-        <div class="hero-visual">
-          <figure class="hero-image" data-scroll-parallax="hero"><img src="assets/daemon-night.jpg" alt="MSLX WebPanel 深色背景"><div class="image-overlay"></div><div class="image-label image-label-top"><span>DAEMON / NIGHT VIEW</span><span>CONNECTED</span></div><div class="image-label image-label-bottom"><span>survival-01</span><b>RUNNING</b></div><figcaption>把正在发生的事，带到手边。</figcaption></figure>
-          <div class="hero-signal" data-scroll-parallax="signal"><span class="signal-caption">LOCAL ENGINE</span><strong>READY</strong><i></i><span class="signal-code">JVM / SHIZUKU / RUNTIME</span></div>
+
+        <div class="hero-art" data-hero-art>
+          <figure class="hero-landscape">
+            <img src="assets/daemon-night.jpg" alt="Minecraft 夜色中的服务器世界">
+            <canvas data-world-canvas aria-label="远程与本机服务节点的三维连接示意"></canvas>
+            <div class="landscape-shade"></div>
+            <div class="art-coordinate"><span>FIELD / 01</span><b>ILLUSTRATIVE SCENE</b></div>
+            <div class="scene-readout" data-scene-readout>
+              <span class="readout-dot"></span>
+              <div><b data-readout-title>远程节点</b><small data-readout-copy>多个 Daemon · 独立连接状态</small></div>
+              <svg class="readout-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg>
+            </div>
+            <figcaption>运行位置不同，管理入口保持一致。</figcaption>
+          </figure>
+          <div class="art-control" role="group" aria-label="切换三维场景焦点">
+            <button type="button" class="art-mode is-active" data-art-mode="remote" aria-pressed="true">远程集群</button>
+            <button type="button" class="art-mode" data-art-mode="local" aria-pressed="false">手机本机</button>
+            <span class="art-indicator" aria-hidden="true"></span>
+          </div>
+          <span class="art-footnote">THREE.JS INSTANCE MAP / SYNTHETIC DATA</span>
         </div>
       </section>
 
-      <section class="manifesto section-shell" aria-labelledby="manifesto-title">
-        <div class="section-mark"><span>MSLX</span><b>02</b></div>
-        <div class="manifesto-copy"><h2 id="manifesto-title">让每个<br>服务器现场<br><em>都在手边。</em></h2><p>Rolithax Launcher 把多台 MSLX Daemon 和手机本机服务端放进同一个服务端总览。你可以按来源查看连接与实例状态，也能从实例直接进入控制台和维护页面。</p></div>
-        <div class="manifesto-note"><span>BUILT FOR SERVER OPS</span><p>远程连接默认使用 HTTPS；API Key 由 Android Keystore 加密保存。</p></div>
-      </section>
-
-      <section class="system dark-band" id="system" aria-labelledby="system-title">
-        <div class="section-shell system-inner">
-          <div class="system-head"><div class="section-mark section-mark-light"><span>ONE SERVER OVERVIEW</span><b>03</b></div><div><h2 id="system-title">远程和本机，<br><em>放在同一张清单。</em></h2><p>多台 Daemon 的服务端与手机本机实例同时出现。按来源区分，按实例进入，不需要在两套管理方式之间来回切换。</p></div></div>
-          <div class="system-grid">
-            <article class="system-panel system-panel-large"><div class="panel-top"><span>REMOTE + LOCAL</span><b>01</b></div><h3>远程实例与本机实例一起管理。</h3><p>多台 Daemon 并行探测连接状态，远程与本机服务端汇总到同一列表。打开实例即可进入对应的控制台和操作入口。</p><div class="panel-graphic remote-graphic"><span class="node node-phone">PHONE</span><span class="node node-daemon">SERVERS</span><i class="link-line link-one"></i><i class="link-line link-two"></i><i class="link-line link-three"></i><span class="graphic-readout">MULTI-DAEMON / LOCAL</span></div></article>
-            <article class="system-panel"><div class="panel-top"><span>CONNECTIONS</span><b>02</b></div><h3>每台 Daemon 保持独立。</h3><p>查看多台连接的在线状态与响应时间。连接默认使用 HTTPS；允许 HTTP 仅用于你确认可信的内网。</p><div class="panel-list"><span><i></i>HTTPS FIRST</span><span><i></i>PARALLEL STATUS</span><span><i></i>INSTANCE ROUTING</span></div></article>
-            <article class="system-panel"><div class="panel-top"><span>LOCAL HOST</span><b>03</b></div><h3>手机也能运行 Java 服务端。</h3><p>创建本机实例，按服务端版本选择 Java 8、17、21 或 25；进程内 JVM 为基础引擎，Shizuku 可启用独立子进程。</p><div class="panel-readout"><span>JAVA RUNTIME</span><b>08&nbsp;&nbsp;17&nbsp;&nbsp;21&nbsp;&nbsp;25</b></div></article>
+      <section class="world-section" id="world" aria-labelledby="world-title">
+        <div class="world-intro section-shell">
+          <h2 id="world-title">从云端 Daemon，<br><em>到你手里的主机。</em></h2>
+          <p class="world-lede">向下滚动，看看服务器现场怎样汇进同一套操作界面。</p>
+        </div>
+        <div class="world-layout section-shell">
+          <div class="world-stage" data-world-stage>
+            <img src="assets/daemon-night.jpg" alt="" aria-hidden="true">
+            <canvas data-story-canvas aria-hidden="true"></canvas>
+            <div class="world-stage-vignette"></div>
+            <div class="stage-label"><span>ROLITHAX / INSTANCE MAP</span><span data-stage-phase>01 — CONNECT</span></div>
+            <div class="stage-orbit-label orbit-remote is-lit" data-orbit-label="remote"><i></i><span>DAEMON / 01</span></div>
+            <div class="stage-orbit-label orbit-phone" data-orbit-label="local"><i></i><span>ANDROID / LOCAL</span></div>
+            <div class="stage-orbit-label orbit-resource" data-orbit-label="resources"><i></i><span>MODRINTH / RESOURCE</span></div>
+            <div class="stage-orbit-label orbit-console" data-orbit-label="console"><i></i><span>CONSOLE / LIVE</span></div>
+            <div class="stage-footer"><span>场景为功能关系示意</span><span>SCROLL TO EXPLORE <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v11M3.5 8.5 8 13l4.5-4.5"/></svg></span></div>
+          </div>
+          <div class="world-chapters">
+            <article class="world-chapter is-active" data-chapter="remote" aria-labelledby="chapter-remote-title">
+              <span class="chapter-index">01 / REMOTE</span>
+              <h3 id="chapter-remote-title">几台 Daemon，<br>一眼看清。</h3>
+              <p>并行查看连接状态与响应时间。打开实例即可进入它所属的控制台、文件和配置维护流程。</p>
+              <div class="chapter-facts"><span>独立连接</span><span>SignalR 状态</span><span>HTTPS 优先</span></div>
+            </article>
+            <article class="world-chapter" data-chapter="local" aria-labelledby="chapter-local-title">
+              <span class="chapter-index">02 / ON DEVICE</span>
+              <h3 id="chapter-local-title">手机也是一台<br>真正的主机。</h3>
+              <p>直接在 Android 上创建 Minecraft Java 服务端。按核心版本匹配 Java，也能用 Shizuku 启动隔离子进程。</p>
+              <div class="chapter-facts"><span>Java 8 / 17 / 21 / 25</span><span>前台服务保活</span></div>
+            </article>
+            <article class="world-chapter" data-chapter="resources" aria-labelledby="chapter-resources-title">
+              <span class="chapter-index">03 / BUILD</span>
+              <h3 id="chapter-resources-title">选好核心，<br>再装上世界。</h3>
+              <p>分步创建向导帮助确定服务端目标；资源中心从 Modrinth 搜索模组、插件、整合包和数据包，并检查依赖。</p>
+              <div class="chapter-facts"><span>分步创建</span><span>依赖检查</span><span>Modrinth</span></div>
+            </article>
+            <article class="world-chapter" data-chapter="console" aria-labelledby="chapter-console-title">
+              <span class="chapter-index">04 / OPERATE</span>
+              <h3 id="chapter-console-title">变化发生时，<br>就在现场处理。</h3>
+              <p>实时查看 ANSI 彩色日志、发送指令，并从同一实例入口管理文件、插件、模组和 server.properties。</p>
+              <div class="chapter-facts"><span>实时控制台</span><span>文件维护</span><span>服务端配置</span></div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="operations section-shell" id="operations" aria-labelledby="operations-title">
-        <div class="operations-intro"><div class="section-mark"><span>IN THE FIELD</span><b>04</b></div><h2 id="operations-title">从连接到<br><em>真正开服。</em></h2><p>创建、部署与日常维护，都从服务端所在的位置开始。</p><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android#使用" target="_blank" rel="noreferrer">阅读使用说明 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></div>
-        <div class="operation-list">
-            <article class="operation-row"><span class="operation-number">01</span><div class="operation-copy" data-scroll-speed=".8"><span>CONNECT</span><h3>扫描配对码，或手动连接。</h3><p>扫描 MSLX 配对二维码，或输入 Daemon 地址与 API Key。地址默认升级到 HTTPS，密钥保存在 Android Keystore。</p></div><div class="operation-meter" data-scroll-speed="-1"><i></i><i></i><i></i><b>SECURE BY DEFAULT</b></div></article>
-            <article class="operation-row"><span class="operation-number">02</span><div class="operation-copy" data-scroll-speed=".65"><span>CREATE / DEPLOY</span><h3>按目标创建，再部署资源。</h3><p>分步向导可创建远程或本机实例。资源中心按游戏版本与加载器筛选 Modrinth 模组、插件、整合包和数据包，并检查依赖。</p></div><div class="operation-terminal" data-scroll-speed="-.8"><span>&gt; target</span><b>local / daemon</b><span>&gt; resources</span><b>Modrinth</b></div></article>
-            <article class="operation-row"><span class="operation-number">03</span><div class="operation-copy" data-scroll-speed=".8"><span>OPERATE</span><h3>每个实例都有完整维护入口。</h3><p>实时 ANSI 彩色日志、命令输入、文件管理、插件与模组、server.properties 都围绕当前实例展开；本机服务端通过前台通知保持运行。</p></div><div class="operation-local" data-scroll-speed="-1"><span>CONSOLE</span><i></i><b>LIVE / LOCAL</b></div></article>
+      <section class="workflow-section section-shell" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <h2 id="workflow-title">从空实例，<br><em>到准备开服。</em></h2>
+          <p>先连接或选定运行位置，再创建实例、安装资源，最后进入日常运维。</p>
+        </div>
+        <div class="workflow-map">
+          <div class="workflow-steps" role="tablist" aria-label="开服流程">
+            <button class="workflow-step is-active" id="flow-tab-connect" type="button" role="tab" aria-selected="true" aria-controls="flow-panel" data-flow-step="connect"><span>01</span><b>连接</b><small>配对码 / Daemon</small></button>
+            <button class="workflow-step" id="flow-tab-create" type="button" role="tab" aria-selected="false" aria-controls="flow-panel" data-flow-step="create"><span>02</span><b>创建</b><small>核心 / Java / 资源</small></button>
+            <button class="workflow-step" id="flow-tab-operate" type="button" role="tab" aria-selected="false" aria-controls="flow-panel" data-flow-step="operate"><span>03</span><b>维护</b><small>控制台 / 文件 / 配置</small></button>
+          </div>
+          <article class="workflow-panel" id="flow-panel" role="tabpanel" aria-labelledby="flow-tab-connect" data-flow-panel>
+            <div class="workflow-panel-copy"><h3 data-flow-title>扫一下配对码，<br>或者手动填写连接。</h3><span data-flow-kicker>PAIR / CONFIGURE</span><p data-flow-description>配对已有 Daemon，也可以设置地址与 API Key。连接优先使用 HTTPS；密钥由 Android Keystore 加密保存。</p><a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android#使用" target="_blank" rel="noreferrer">查看操作说明 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a></div>
+            <div class="workflow-diagram" aria-hidden="true"><div class="diagram-device"><span>MSLX</span><i></i><b>PAIR</b></div><div class="diagram-link"><i></i><i></i><i></i></div><div class="diagram-host"><span>HTTPS</span><b>DAEMON</b><small>CONNECTED</small></div><span class="diagram-stamp">SECURE / BY DEFAULT</span></div>
+          </article>
         </div>
       </section>
 
-      <section class="modes dark-band" id="modes" aria-labelledby="modes-title">
-        <div class="section-shell modes-inner">
-          <div class="modes-head"><div class="section-mark section-mark-light"><span>REMOTE + ON DEVICE</span><b>05</b></div><div><h2 id="modes-title">电脑上的 Daemon，<br><em>和手机里的服务端。</em></h2><p>两种运行位置共享服务端总览、实例入口与维护流程；没有电脑时，也可以直接从手机本机开服。</p></div></div>
-          <div class="mode-switcher" role="tablist" aria-label="运行模式"><button class="mode-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="mode-remote" data-mode="remote">REMOTE DAEMON</button><button class="mode-tab" type="button" role="tab" aria-selected="false" aria-controls="mode-local" data-mode="local">LOCAL ENGINE</button></div>
-          <div class="mode-panels"><article class="mode-panel is-active" id="mode-remote" role="tabpanel" data-mode-panel="remote"><div class="mode-panel-art remote-art"><span>API KEY</span><b>HTTPS</b><i></i><strong>DAEMON</strong></div><div><span class="mode-label">REMOTE / DAEMON</span><h3>多台远程主机，同屏管理。</h3><p>同时连接多台 MSLX Daemon，查看在线状态与响应时间。进入实例后可以控制进程、管理文件、查看实时日志并发送命令。</p><ul><li>多个 Daemon 独立连接</li><li>SignalR 实时状态</li><li>地址优先使用 HTTPS</li></ul></div></article><article class="mode-panel" id="mode-local" role="tabpanel" data-mode-panel="local" hidden><div class="mode-panel-art local-art"><span>JVM</span><b>SHIZUKU</b><i></i><strong>PHONE</strong></div><div><span class="mode-label">LOCAL / DEVICE</span><h3>电脑不在，也能开服。</h3><p>直接在手机上创建并运行 Minecraft Java 服务端，实例可选公共或应用私有目录，并从应用内控制台管理。</p><ul><li>Java 8 / 17 / 21 / 25</li><li>前台服务与常驻通知</li><li>Shizuku 可启用子进程引擎</li></ul></div></article></div>
+      <section class="console-section" id="console" aria-labelledby="console-title">
+        <div class="console-layout section-shell">
+          <div class="console-copy">
+            <h2 id="console-title">不用离开现场，<br><em>把运维做完。</em></h2>
+            <p>启动与停止服务、跟进实时日志、管理文件和服务端配置。需要部署内容时，从实例直接打开资源管理。</p>
+            <a class="text-action" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">浏览源代码 <svg class="inline-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+          </div>
+          <div class="console-display">
+            <div class="console-top"><span><i></i><i></i><i></i></span><b>INSTANCE / CONSOLE</b><small>示意界面</small></div>
+            <div class="console-body" aria-label="终端界面示意">
+              <p><span class="console-dim">[server]</span> Starting Minecraft server</p>
+              <p><span class="console-green">[loader]</span> Checking Java runtime</p>
+              <p><span class="console-amber">[resource]</span> Dependency scan complete</p>
+              <p><span class="console-dim">[system]</span> Console attached to instance</p>
+              <div class="console-input"><span>&gt;</span><i></i><small>发送服务器指令</small></div>
+            </div>
+            <div class="console-tool-row"><span>ANSI 彩色日志</span><span>文件</span><span>Mods &amp; Plugins</span><span>server.properties</span></div>
+          </div>
         </div>
       </section>
 
-      <section class="console-section section-shell" id="console" aria-labelledby="console-title">
-        <div class="console-heading"><div class="section-mark"><span>LIVE CONSOLE</span><b>06</b></div><div><h2 id="console-title">日志不止是输出，<br><em>也是操作入口。</em></h2><p>远程 Daemon 与手机本机服务端都能打开实时控制台，读取 ANSI 彩色日志、发送命令，并跟随最新输出。</p></div></div>
-        <div class="console-layout"><div class="console-window" aria-label="控制台示例"><div class="console-window-top"><span><i></i><i></i><i></i></span><b>survival-01 / console</b><span>LIVE</span></div><div class="console-lines"><p><span>12:08:41</span> [Server thread/INFO]: Done (4.921s)! For help, type "help"</p><p><span>12:08:47</span> [Server thread/INFO]: <b>There are 4 of a max of 20 players online</b></p><p><span>12:09:02</span> [User Authenticator #2/INFO]: UUID of player operator is ready</p><p><span>12:09:13</span> [Server thread/INFO]: Saving the game (this may take a moment!)</p><p class="console-cursor"><span>12:09:14</span> &gt; <i></i></p></div><div class="console-input"><span>&gt;</span><span>send a command</span><b>ENTER</b></div></div><aside class="console-aside"><span class="aside-label">ONE INSTANCE / ONE CONTEXT</span><h3>看见状态，就能继续处理。</h3><p>每台服务端都有自己的日志与命令入口。进入实例即可继续启停、维护文件、管理插件模组，不必先切换全局连接。</p><div class="aside-facts"><span><b>ANSI</b><small>彩色日志</small></span><span><b>LIVE</b><small>实时推送</small></span><span><b>LOCAL</b><small>本机与远程</small></span></div></aside></div>
+      <section class="cta-section section-shell" aria-labelledby="cta-title">
+        <div class="cta-content"><h2 id="cta-title">下一台服务器，<br><em>可以就在你手上。</em></h2><p>下载当前公开版本，连接 MSLX Daemon，或从手机本机新建实例。</p></div>
+        <div class="cta-actions">
+          <a class="action action-primary magnetic" href="download.html"><span>前往下载页</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+          <a class="action action-quiet" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer"><span>查看 GitHub</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></a>
+        </div>
       </section>
-
-      <section class="cta section-shell" aria-labelledby="cta-title"><div class="cta-rule"></div><div class="cta-copy"><span class="section-mark"><span>ROLITHAX LAUNCHER</span><b>07</b></span><h2 id="cta-title">从手边，<br><em>管理整个现场。</em></h2><p>连接已有的 MSLX Daemon，或直接在手机上创建服务端。Rolithax Launcher 以 AGPL-3.0 开源，使用前请阅读免责声明。</p></div><div class="cta-actions"><a class="action action-dark" href="download.html">获取 Rolithax Launcher <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="action action-line" href="https://github.com/WLudy1012/MSLX_APP-Android" target="_blank" rel="noreferrer">浏览源代码</a></div></section>
     </main>
 
-    <footer class="site-footer section-shell"><a class="brand" href="#top" aria-label="返回 Rolithax Launcher 首页"><img src="assets/rolithax-logo.png" alt="Rolithax Launcher"><span><b>ROLITHAX</b><small>MSLX SERVER CONTROL</small></span></a><p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p><div class="footer-links"><a href="download.html">下载</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/LICENSE" target="_blank" rel="noreferrer">AGPL-3.0</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/DISCLAIMER.txt" target="_blank" rel="noreferrer">免责声明</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">反馈问题</a></div><span class="footer-note">ROLITHAX / WLudy1012</span></footer>
+    <footer class="site-footer section-shell">
+      <a class="brand" href="#top" aria-label="返回首页"><img src="assets/rolithax-logo.png" alt=""><span><b>ROLITHAX</b><small>SERVER CONTROL / ANDROID</small></span></a>
+      <p>独立第三方项目，与 MSLTeam 无隶属或关联关系。</p>
+      <div class="footer-links"><a href="download.html">下载 APK</a><a href="mobile.html">移动版</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/LICENSE" target="_blank" rel="noreferrer">AGPL-3.0</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/blob/main/DISCLAIMER.txt" target="_blank" rel="noreferrer">免责声明</a><a href="https://github.com/WLudy1012/MSLX_APP-Android/issues" target="_blank" rel="noreferrer">反馈问题</a></div>
+      <span class="footer-note">ROLITHAX / WLudy1012 / 2026</span>
+    </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
   </body>
 </html>

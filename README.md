@@ -1,7 +1,9 @@
 # Rolithax Launcher website
 
-This is the dependency-light static website for Rolithax Launcher, the third-party Android client for MSLX Daemon with local Minecraft Java server hosting.
+This is the static GitHub Pages site for Rolithax Launcher, the independent Android client for managing MSLX Daemon and running Minecraft Java servers locally.
 
-Set GitHub Pages to deploy from the `main` branch and choose `/(root)` as the published folder. The site is served directly from `index.html`; `styles.css`, `script.js`, and `assets/` stay alongside it.
+Publish the repository root from `main` (`/(root)`). `index.html` is the desktop experience; narrow screens route to the separately composed `mobile.html`. Add `?desktop=1` to the desktop URL to view its compact layout on a narrow screen.
 
-The first visit includes a short boot/loading screen, and the pages remain usable without a build step. `download.html` reads the latest public release metadata and resolves `app-release.apk` and `app-release-lite.apk` to CNB direct links. The download page also explains encrypted backup migration from the previous MSLX Android package.
+The desktop page uses Three.js for a visible 3D instance map with a server core, orbit paths, signal particles, and Motion for scroll and interface animation. The mobile page uses Motion without starting WebGL. Both libraries load from version-pinned jsDelivr URLs; when 3D or motion libraries are unavailable, the content and image fallbacks remain usable. Motion follows `prefers-reduced-motion`. All routes include the Rolithax favicon and touch icon.
+
+`download.html` independently reads public Release metadata and resolves the full and lite APK attachments to CNB direct links, with cached and public-page fallbacks. The site needs no build step or server-side runtime. The latest Android source currently identifies itself as version `1.7.9` (`versionCode` `41`); the download page always describes the actual public Release separately from unpublished source changes.
